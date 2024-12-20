@@ -12,7 +12,7 @@ export class CodeExecutionService {
         fs.mkdirSync(tempDir);
       }
       
-      const fileName = path.join(tempDir, `temp.py`);
+      const fileName = path.join(tempDir, `temp.${language}`);
       let command: string;
 
       switch (language) {
@@ -20,12 +20,10 @@ export class CodeExecutionService {
           command = `node -e "${code.replace(/"/g, '\\"')}"`;
           break;
         case 'python':
-          console.log("Language: ", language);
-          console.log("FileName: ", fileName);
           fs.writeFileSync(fileName, code);
           command = `python ${fileName}`;
           break;
-        case 'java':``
+        case 'java':
           fs.writeFileSync(fileName, code);
           const className = 'Main';
           const javaFile = path.join(tempDir, `${className}.java`);
