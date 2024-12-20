@@ -23,18 +23,6 @@ export class CodeExecutionService {
           fs.writeFileSync(fileName, code);
           command = `python ${fileName}`;
           break;
-        case 'java':
-          fs.writeFileSync(fileName, code);
-          const className = 'Main';
-          const javaFile = path.join(tempDir, `${className}.java`);
-          fs.renameSync(fileName, javaFile);
-          command = `javac ${javaFile} && java -cp ${tempDir} ${className}`;
-          break;
-        case 'cpp':
-          fs.writeFileSync(fileName, code);
-          const outputFile = path.join(tempDir, 'a.out');
-          command = `g++ ${fileName} -o ${outputFile} && ${outputFile}`;
-          break;
         default:
           reject('Unsupported language.');
           return;

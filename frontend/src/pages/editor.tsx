@@ -18,7 +18,7 @@ const CodeEditor = () => {
             language,
             code,
         });
-        console.log(response.data)
+        
         setOutput(response.data.output || response.data.error);
     } catch (error) {
         setOutput("Error executing code.")
@@ -31,8 +31,6 @@ const CodeEditor = () => {
         <select value={language} onChange={(e) => setLanguage(e.target.value)} style={{ padding: "5px" }}>
           <option value="javascript">Javascript</option>
           <option value="python">Python</option>
-          <option value="java">Java</option>
-          <option value="cpp">C++</option>
         </select>
         <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
           Toggle Theme
