@@ -13,7 +13,7 @@ export class CodeExecutionController {
         language,
         code,
       );
-      console.log("Result: ", result);
+
       return { sucess: true, output: result };
     } catch (error) {
       return { success: false, error: error.toString() };
